@@ -1,7 +1,7 @@
 # Exclude IDE's project directory
 *nbproject
-*nbactions
-*nb-configuration
+*/nbactions.xml
+*/nb-configuration.xml
 
 # Temporary files.
 tmp*
