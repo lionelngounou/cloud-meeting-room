@@ -1,0 +1,20 @@
+# Exclude IDE's project directory
+nbproject
+nbactions
+nb-configuration
+
+# Temporary files.
+tmp*
+
+# Log files
+*.log
+
+# Patch/diff artifacts.
+*.patch
+*.diff
+*.orig
+*.rej
+
+target
+/nb-configuration.xml
+target/
