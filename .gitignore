@@ -1,7 +1,7 @@
 # Exclude IDE's project directory
-nbproject
-nbactions
-nb-configuration
+*nbproject
+*nbactions
+*nb-configuration
 
 # Temporary files.
 tmp*
@@ -18,3 +18,4 @@ tmp*
 target
 /nb-configuration.xml
 target/
+*target/
