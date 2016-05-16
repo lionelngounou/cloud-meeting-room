@@ -37,7 +37,7 @@
 								<td>{{bk.date}}</td>
 								<td>{{bk.timeSlot.description}}</td>
 								<td>
-									<span ng-if="bk.past" title="meeting finished" class="text-primary glyphicon glyphicon-check"></span>
+									<span ng-if="bk.past && !bk.inProgress" title="meeting finished" class="text-primary glyphicon glyphicon-check"></span>
 									<span ng-if="bk.inProgress" title="live meeting" class="text-success">LIVE</span>
 								</td>
 								<td><a href="javascript:;" ng-click="alert('delete...')">

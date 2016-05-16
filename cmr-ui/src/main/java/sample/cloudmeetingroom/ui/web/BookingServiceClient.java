@@ -13,7 +13,7 @@ public interface BookingServiceClient {
 
 	public RoomBooking[] getRoomBookings();
 
-	public void postRoomBooking(RoomBooking roomBooking);
+	public void postRoomBooking(RoomBookingForm roomBookingForm);
 	
 	public void deleteRoomBooking(int id);
 	

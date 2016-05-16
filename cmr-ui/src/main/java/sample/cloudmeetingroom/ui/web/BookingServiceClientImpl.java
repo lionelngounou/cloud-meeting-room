@@ -36,9 +36,9 @@ public class BookingServiceClientImpl implements BookingServiceClient {
 	}
 
 	@Override
-	public void postRoomBooking(RoomBooking roomBooking){
-		ResponseEntity<Map> response = restTemplate.postForEntity(BASE_URL + "/bookings", roomBooking, Map.class);
-		//return null;
+	public void postRoomBooking(RoomBookingForm roomBookingForm){
+		ResponseEntity<Map> response = restTemplate.postForEntity(BASE_URL + "/bookings", roomBookingForm, Map.class);
+		//todo : deal with graceful response error - e.g validation;
 	}
 
 	@Override

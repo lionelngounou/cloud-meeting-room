@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sample.cloudmeetingroom.ui.model.RoomBooking;
 
 /**
  * @author lionel ngounou
@@ -45,14 +43,13 @@ public class BookingController {
         return new ResponseEntity(body, HttpStatus.OK);
     }
 	
-	@RequestMapping(value = "/api", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@RequestMapping(value = "/api", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Map> createAPI(@RequestBody RoomBooking roomBooking){
-		System.out.println("\t ||| create room booking " + roomBooking);
-		bookingServiceClient.postRoomBooking(roomBooking);
+    public ResponseEntity<Map> createAPI(@RequestBody RoomBookingForm roomBookingForm){
+		bookingServiceClient.postRoomBooking(roomBookingForm);
         Map body = new HashMap(2);
         body.put("success", true);
-        body.put("roomBooking", roomBooking);
+        body.put("roomBooking", roomBookingForm);
         return new ResponseEntity(body, HttpStatus.CREATED);
     }
 }

@@ -47,7 +47,7 @@
 		$scope.createNewRoomBooking = function(){
 			console.log("@===@ create new room booking : " + JSON.stringify($scope.newRoomBooking));
 			//add to back end
-			$http.post(URLS.bookingCreateAPI).then( 
+			$http.post(URLS.bookingCreateAPI, $scope.newRoomBooking).then( 
 				function(response){
 					console.log("@===@ success from create booking : " + JSON.stringify(response.data));
 					loadRoomBookings();//refresh list
