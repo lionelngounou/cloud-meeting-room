@@ -13,11 +13,13 @@
 			</div>
 			<div class="row" ng-controller="bookingCtrl"> 
 				<div class="col-md-12"> 
-					<button type="button" title="add/create boooking" class="btn btn-primary btn-sm pull-right">
+					<button type="button" title="add/create boooking" ng-click="launchCreateForm()"						
+							class="btn btn-primary btn-sm pull-right">
 						<span class="glyphicon glyphicon-plus"></span>
 						Add
 					</button>
 				</div>
+				
 				<div class="col-md-12"> 
 					<table class="table table-striped table-hover" >
 						<thead>
@@ -31,7 +33,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="bk in bookings">
+							<tr ng-repeat="bk in bookings" data-row-id="{{bk.id}}">
 								<td>{{bk.user}}</td>
 								<td>{{bk.room}}</td>
 								<td>{{bk.date}}</td>
@@ -40,8 +42,8 @@
 									<span ng-if="bk.past && !bk.inProgress" title="meeting finished" class="text-primary glyphicon glyphicon-check"></span>
 									<span ng-if="bk.inProgress" title="live meeting" class="text-success">LIVE</span>
 								</td>
-								<td><a href="javascript:;" ng-click="alert('delete...')">
-										<span ng-if="!bk.past && !bk.inProgress" title="cancel meeting" class="text-danger glyphicon glyphicon-remove-circle"></span>
+								<td><a ng-if="!bk.past && !bk.inProgress" href="javascript:;" ng-click="deleteRoomBooking(bk.id)">
+										<span  title="cancel meeting" class="text-danger glyphicon glyphicon-remove-circle"></span>
 									</a>	
 								</td>
 							</tr>						
@@ -50,7 +52,7 @@
 				</div>
 				
 				<div class="col-md-12"> 
-					<button type="button" title="add/create boooking" 	ng-click="launchCreateForm()"						
+					<button type="button" title="add/create boooking" ng-click="launchCreateForm()"						
 							class="btn btn-primary btn-sm pull-right">
 						<span class="glyphicon glyphicon-plus"></span>
 						Add

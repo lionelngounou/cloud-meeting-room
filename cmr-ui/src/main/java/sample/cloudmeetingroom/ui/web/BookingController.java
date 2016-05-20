@@ -7,10 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * @author lionel ngounou
@@ -51,5 +53,15 @@ public class BookingController {
         body.put("success", true);
         body.put("roomBooking", roomBookingForm);
         return new ResponseEntity(body, HttpStatus.CREATED);
+    }
+	
+	@RequestMapping(value = "/api/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public Map deleteAPI(@PathVariable(value="id") Integer id){
+		bookingServiceClient.deleteRoomBooking(id);
+        Map body = new HashMap(1);
+        body.put("success", true);
+        return body;
     }
 }

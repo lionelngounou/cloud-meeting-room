@@ -59,6 +59,19 @@
 			);
 		};
 		
+		$scope.deleteRoomBooking = function(id){
+			console.log("@===@ delete room booking id: " + id);
+			$http.delete(URLS.bookingCreateAPI + '/' + id).then( 
+				function(response){
+					console.log("@===@ success from delete booking : " + JSON.stringify(response.data));
+					loadRoomBookings();//refresh list
+				}, 
+				function(response){
+					console.log("@===@ error from delete booking : " + JSON.stringify(response.data));
+				}				
+			);
+		};
+		
 		loadRoomBookings();
 		
 		$("#createBookingModal").on('hidden.bs.modal', function(){ 

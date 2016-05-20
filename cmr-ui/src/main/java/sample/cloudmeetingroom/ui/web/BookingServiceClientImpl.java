@@ -1,6 +1,9 @@
 package sample.cloudmeetingroom.ui.web;
 
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.ResponseEntity;
 import sample.cloudmeetingroom.ui.model.*;
 import org.springframework.stereotype.Component;
@@ -9,11 +12,13 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author lionel ngounou
  */
+@Configuration
+@PropertySource("classpath:app-keys.properties")
 @Component
 public class BookingServiceClientImpl implements BookingServiceClient {	
 	
-	private static final String BASE_URL = "http://localhost:8089/api/v1/rooms";
-	//private static final String CONTENT_TYPE = "application/vnd.org.jfrog.artifactory.security.Group+json";
+	@Value("${booking.service.url}")
+	private String BASE_URL; // = "http://localhost:8089/api/v1/rooms";
 
 	private final RestTemplate restTemplate = new RestTemplate(); 
 
